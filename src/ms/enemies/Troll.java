@@ -7,7 +7,12 @@ import java.util.Random;
 public class Troll extends Enemy{
     private int hp =100;
     private int EXP = 50;
-@Override
+
+    public int getGoldFromTroll() {
+        return 50;
+    }
+
+    @Override
     public void setEXP(int exp) {
         EXP = exp;
 
@@ -39,23 +44,31 @@ public class Troll extends Enemy{
     public Player specialAtt(Player currentPlayer) {
         return currentPlayer.setHp(currentPlayer.getHp()-20);
     }
-    public void isSpecialAttack(Random random,Player player){
+    public void isSpecialAttack(Random random,Player player,Troll troll){
         int randomFrom0to1 =random.nextInt(2);
 
-        if (randomFrom0to1==1){
-            System.out.println("SPECIAL ATTACK "+"ROLL: "+randomFrom0to1);
-            player.setHp(player.getHp()-10);
+        if (troll.getHp()>0) {
+            if (randomFrom0to1 == 1) {
+                System.out.println("SPECIAL ATTACK " + "ROLL: " + randomFrom0to1);
+                player.setHp(player.getHp() - 10);
+            } else {
+                System.out.println("NORMAL ATTACK " + randomFrom0to1);
+                player.setHp(player.getHp() - 5);
+            }
             System.out.println(player.getHp());
-            System.out.println(player.getCharacterName()+"HP: "+player.getHp());
-        }else {
-            System.out.println("NORMAL ATTACK "+randomFrom0to1);
-            player.setHp(player.getHp()-5);
-            System.out.println(player.getHp());
-            System.out.println(player.getCharacterName()+"HP: "+player.getHp());
-        }
+            System.out.println(player.getCharacterName() + "HP: " + player.getHp());
 
+        }
     }
 
-
+public void addExpFromTrollToPlayer(Troll troll,Player player){
+    if (troll.getHp()<=0){
+        player.setExperience(player.getExperience()+troll.getEXP());
+        addGoldToPlayer(troll,player);
+    }
+}
+public static void addGoldToPlayer(Troll troll,Player player){
+        player.setGold(troll.getGoldFromTroll()+player.getGold());
+}
 
 }

@@ -1,20 +1,35 @@
 package ms;
 
+import ms.items.ItemsFromStore;
+
+import java.util.List;
+
 public class Player {
-   private long gold;
+   private int gold;
     private String characterName;
     protected int level;
     private int hp;
-    private final int normalDmg;
-    private final int specialDmg;
+    private int normalDmg;
+    private int specialDmg;
     private  int mp;
+    private int experience;
+    private List<ItemsFromStore>eq;
 
-    public Player() {
-        hp = 100;
-        gold=0;
-        normalDmg=10;
-        specialDmg=20;
-        mp = 100;
+    public List<ItemsFromStore> getEq() {
+        return eq;
+    }
+
+    public Player setEq(List<ItemsFromStore> eq) {
+        this.eq = eq;
+        return this;
+    }
+    public int getExperience() {
+        return experience;
+    }
+
+    public Player setExperience(int experience) {
+        this.experience = experience;
+        return this;
     }
 
 
@@ -43,13 +58,12 @@ public class Player {
     }
 
 
-    private Directions directions;
 
-    public long getGold() {
+    public int getGold() {
         return gold;
     }
 
-    public Player setGold(long gold) {
+    public Player setGold(int gold) {
         this.gold = gold;
         return this;
     }
@@ -77,12 +91,15 @@ public class Player {
     }
 
 
-    public Directions getDirections() {
-        return directions;
-    }
 
-    public Player setDirections(Directions directions) {
-        this.directions = directions;
+    public Player setNormalDmg(int normalDmg) {
+        this.normalDmg = normalDmg;
         return this;
     }
+
+    public Player setSpecialDmg(int specialDmg) {
+        this.specialDmg = specialDmg;
+        return this;
+    }
+
 }

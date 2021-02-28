@@ -2,5 +2,7 @@ package ms;
 
 public enum Places {
     HOSPITAL,
-    MARKET;
+    MARKET,
+    FACTORY,
+    CHURCH;
 }
