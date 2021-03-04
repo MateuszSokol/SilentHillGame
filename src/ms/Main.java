@@ -10,7 +10,6 @@ import java.util.*;
 public class Main {
     public static void main(String[] args) {
         Market market = new Market();
-        boolean isStarted=true;
         List<ItemsFromStore> itemsFromStores = new ArrayList<>();
         Random random= new Random();
         Scanner scanner = new Scanner(System.in);
@@ -33,17 +32,20 @@ player.setEq(itemsFromStores);
         useFullMethods.printDirections();
         System.out.println("Type where u want to go ?");
         commandString = scanner.nextLine();
-      movement.takeMeToLeft(commandString,player);
-        commandString = scanner.nextLine();
-
-
-        troll.isSpecialAttack(random,player,troll);
-
-        while (troll.getHp()!=0){
-            movement.StartFightWithTroll(player,commandString,troll);
-            System.out.println("WAITING FOR TROLL ATTACK");
-            troll.isSpecialAttack(random,player,troll);
+        if (commandString.equalsIgnoreCase("left")){
+            System.out.println("Something is coming from hospital prepare to fight!!");
+            while (troll.getHp()!=0){
+                movement.takeMeToLeft(player);
+                commandString = scanner.nextLine();
+                movement.StartFightWithTroll(player,commandString,troll);
+                System.out.println("WAITING FOR TROLL ATTACK");
+                troll.isSpecialAttack(random,player,troll);
+            }
         }
+
+
+
+
 //---------------------------------------------------------------------------------------------------
         //AFTER FIGHT CHECK IF LVL UP
         troll.addExpFromTrollToPlayer(troll,player);
@@ -73,6 +75,9 @@ commandString=scanner.nextLine();
 
                 commandString=scanner.nextLine();
                 wearEquipment(player,commandString);
+                System.out.println("type s to show stats");
+                commandString = scanner.nextLine();
+                movement.playerShowStats(player,commandString);
 
             } else if (commandString.equalsIgnoreCase(Places.CHURCH.toString())){
 

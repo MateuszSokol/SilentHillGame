@@ -4,8 +4,6 @@ import ms.Player;
 
 public abstract class Enemy {
     private int Hp;
-    public abstract Player normalAtt(Player currentPlayer);
-    public abstract Player specialAtt(Player currentPlayer);
     private int Exp;
 
     public int getHp() {

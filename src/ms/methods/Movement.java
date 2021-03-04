@@ -14,19 +14,19 @@ import java.util.Random;
 
 public class Movement implements Battle {
 
-    public void takeMeToLeft(String command, Player currentPlayer) {
+    public void takeMeToLeft( Player currentPlayer) {
 
-        if (command.equalsIgnoreCase("left")) {
-            System.out.println("Something is coming from hospital prepare to fight!!");
+
+
             System.out.println("type 1 to normalAttack");
             System.out.println("type 2 to specialAttack == -5 mana " + currentPlayer.getMp());
             System.out.println(" NORMAL DMG: " + currentPlayer.getNormalDmg());
             System.out.println(" SPECIAL DMG: " + currentPlayer.getSpecialDmg());
 
-        } else {
-            System.out.println("You can't go there");
         }
-    }
+
+
+
 
 
     @Override
@@ -79,7 +79,8 @@ public class Movement implements Battle {
             player.getEq().add(ItemsFromStore.HEALTH_POTION);
             System.out.println("You have bought:" + ItemsFromStore.HEALTH_POTION);
         } else if (command.equalsIgnoreCase("2") && player.getGold() == 50) {
-            player.getEq().add(ItemsFromStore.MANA_POTION);;
+            player.getEq().add(ItemsFromStore.MANA_POTION);
+            ;
             System.out.println("You have bought:" + ItemsFromStore.MANA_POTION);
         } else if (command.equalsIgnoreCase("3") && player.getGold() == 100) {
             player.getEq().add(ItemsFromStore.SWORD);
@@ -92,7 +93,24 @@ public class Movement implements Battle {
             System.out.println("You have bought:" + ItemsFromStore.SWORD_OF_JUSTICE);
 
         }
+
+    }
+
+    public void playerShowStats(Player player,String command) {
+        if (command.equalsIgnoreCase("s")) {
+
+
+            System.out.println("LVL: " + player.getLevel());
+            System.out.println("EXPERIENCE: " + player.getExperience());
+            System.out.println("Health: " + player.getHp());
+            System.out.println("Mana: " + player.getMp());
+            System.out.println("NORMAL DMG: " + player.getNormalDmg());
+            System.out.println("SPECIAL DMG: " + player.getSpecialDmg());
+            System.out.println("GOLD: " + player.getGold());
         }
     }
+}
+
+
 
 
